@@ -31,17 +31,18 @@ window.onload = () => {
         let newDescriptionInput = document.getElementById(`description-${todo._id}`).value
 
         // PUT http://localhost:3000/todo/:id
-
-        fetch(`http://localhost:3000/todo/${todo._id}`, {
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            method: 'PUT',
-            body: JSON.stringify({
-              'title': newTitleInput,
-              'description': newDescriptionInput
-            })
+        const data = {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          method: 'PUT',
+          body: JSON.stringify({
+            'title': newTitleInput,
+            'description': newDescriptionInput
           })
+        }
+
+        fetch(`http://localhost:3000/todo/${todo._id}`, data)
           .then(response => response.json())
           .then(data => {
             console.log(data)
@@ -54,16 +55,10 @@ window.onload = () => {
     let deleteButton = document.getElementById(`delete-${todo._id}`)
     deleteButton.addEventListener('click', () => {
       fetch(`http://localhost:3000/todo/${todo._id}`, {
-          // headers: {
-          //   'Content-Type': 'application/json'
-          // },
           method: 'DELETE'
         })
         .then(response => response.json())
         .then(data => {
-          console.log(data)
-          // var item = document.getElementById("myLI");
-          // item.parentNode.removeChild(item);
           let removedToDo = document.getElementById(todo._id)
           removedToDo.parentNode.removeChild(removedToDo)
         })

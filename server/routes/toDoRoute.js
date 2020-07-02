@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const toDoModel = require('../models/toDoModel.js');
 
-mongoose.connect('mongodb+srv://eelan:tung@cluster0-igb2g.mongodb.net/todo?retryWrites=true&w=majority', {
+mongoose.connect('', {
   useUnifiedTopology: true,
   useNewUrlParser: true
 });
