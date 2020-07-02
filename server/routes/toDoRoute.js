@@ -28,8 +28,8 @@ router.get('/', async (req, res) => {
 // POST http://localhost:3000/todo
 router.post('/', async (req, res) => {
   console.log('POST http://localhost:3000/todo')
+  console.log(req.body)
   // front end will pass req.body = {title: '', date: '', description: '', boolean: false}
-  console.log(req.body.title === '' || req.body.descripton === '')
   if (req.body.title === '' || req.body.descripton === '') {
     return res.status(400).json({
       error: 'Please fill out all fields'
